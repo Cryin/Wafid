@@ -138,7 +138,8 @@ class wafid(object):
                   # print "identify website waf type is : "+self._finger
                    return True
                 else:
-                   print "regmatch head_type regexp false!"
+                    pass
+                   #print "regmatch head_type regexp false!"
       
             if not self._finger:
                 return False 
@@ -157,7 +158,7 @@ class wafid(object):
                 return True
             else:
                 self._nowaf="This website has no waf or identify false!!!"
-                print "get waf finger false:"+self._nowaf
+                #print "get waf finger false:"+self._nowaf
                 return False
         return False
 
@@ -175,9 +176,10 @@ class wafid(object):
                     return True
                 else:
                     self._nowaf="This website has no waf or identify false!!!"
-                    print "get waf finger false:"+self._nowaf
+                    #print "get waf finger false:"+self._nowaf
             else:
-                print "head type search ..."
+                pass
+                #print "head type search ..."
         
         if check_resp(resp):
            return True
@@ -201,3 +203,4 @@ if __name__ == '__main__':
     url =options.url
     wafidentify = wafid(url)
     wafidentify._run()
+
