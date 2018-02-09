@@ -1,4 +1,7 @@
 # wafid
+
+ WAFid - Web Application Firewall identify Tool
+
  Wafid allows one to identify and fingerprint Web Application Firewall (WAF) products protecting a website.
  
 # How does it work?
@@ -7,16 +10,70 @@
  For further details, check out the source code on the main site, github.com/Cryin/wafid.
  
 # What does it detect?
- It detects a number of WAFs. 360、Safedog、Anquanbao、Baidu Yunjiasu、Knownsec、BIG-IP、Barracuda、BinarySEC、BlockDos、Cisco ACE、CloudFlare、WebSphere、jiasule、Palo Alto and so on...
- 
+ It detects a number of WAFs. 
+
+ ``` 
+python wafid.py -l
+  
+  __      __  _____  ___________.__    .___
+/  \    /  \/  _  \ \_   _____/|__| __| _/
+\   \/\/   /  /_\  \ |    __)  |  |/ __ | 
+ \        /    |    \|     \   |  / /_/ | 
+  \__/\  /\____|__  /\___  /   |__\____ | 
+       \/         \/     \/            \/
+
+WAFid - Web Application Firewall identify Tool
+By Cryin'
+
+WAFid can identify these WAFs:
+  360
+  Safedog
+  NetContinuum
+  Anquanbao
+  Baidu Yunjiasu
+  Knownsec KS-WAF
+  BIG-IP
+  Barracuda
+  BinarySEC
+  BlockDos
+  Cisco ACE
+  CloudFlare
+  NetScaler
+  FortiWeb
+  jiasule
+  Newdefend
+  Palo Alto
+  Safe3WAF
+  Profense
+  West263CDN
+  WebKnight
+  Wallarm
+  USP Secure Entry Server
+  Sucuri WAF
+  Radware AppWall
+  PowerCDN
+  Naxsi
+  Mission Control Application Shield
+  IBM WebSphere DataPower
+  Edgecast
+  Applicure dotDefender
+  Comodo WAF
+  ChinaCache-CDN
+  NSFocus
+ ``` 
+
  Also you can add waf id with finger.xml!
  
 # How do I use it?
 
  Usage: python wafid.py -u URL
  
+# Thanks
+
+[shellc0der](https://github.com/she11c0der)
+ 
 # Questions?
 
- contact me:Cryin@insight-labs.org
+ contact [me](416049355@qq.com)
  
  
