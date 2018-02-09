@@ -1,7 +1,20 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # waf identify prog
-# Author Cryin@insight-labs.org
+# Author Cryin'
+
+'''
+ __      __  _____  ___________.__    .___
+/  \    /  \/  _  \ \_   _____/|__| __| _/
+\   \/\/   /  /_\  \ |    __)  |  |/ __ | 
+ \        /    |    \|     \   |  / /_/ | 
+  \__/\  /\____|__  /\___  /   |__\____ | 
+       \/         \/     \/            \/
+
+WAFid - Web Application Firewall identify Tool
+By Cryin'
+'''
+
 
 from copy import deepcopy
 from urlparse import urljoin
@@ -11,6 +24,43 @@ import os
 import requests
 import optparse
 import sys
+
+wafdetectlist = [
+    '360',
+    'Safedog',
+    'NetContinuum',
+    'Anquanbao',
+    'Baidu Yunjiasu',
+    'Knownsec KS-WAF',
+    'BIG-IP',
+    'Barracuda',
+    'BinarySEC',
+    'BlockDos',
+    'Cisco ACE',
+    'CloudFlare',
+    'NetScaler',
+    'FortiWeb',
+    'jiasule',
+    'Newdefend',
+    'Palo Alto',
+    'Safe3WAF',
+    'Profense',
+    'West263CDN',
+    'WebKnight',
+    'Wallarm',
+    'USP Secure Entry Server',
+    'Sucuri WAF',
+    'Radware AppWall',
+    'PowerCDN',
+    'Naxsi',
+    'Mission Control Application Shield',
+    'IBM WebSphere DataPower',
+    'Edgecast',
+    'Applicure dotDefender',
+    'Comodo WAF',
+    'ChinaCache-CDN',
+    'NSFocus'
+]
 
 WAF_ATTACK_VECTORS = (
                         "",  # NULL
@@ -28,7 +78,19 @@ WAF_PRODUCT_NAME = (
                      "ModSecurity: Open Source Web Application Firewall",
                      "Palo Alto Firewall"
                    )
-                     
+
+banner = r'''
+ __      __  _____  ___________.__    .___
+/  \    /  \/  _  \ \_   _____/|__| __| _/
+\   \/\/   /  /_\  \ |    __)  |  |/ __ | 
+ \        /    |    \|     \   |  / /_/ | 
+  \__/\  /\____|__  /\___  /   |__\____ | 
+       \/         \/     \/            \/
+
+WAFid - Web Application Firewall identify Tool
+By Cryin'
+'''
+
 class wafid(object):
     def __init__(self,url):
 
@@ -122,14 +184,21 @@ class wafid(object):
         return False
 
 if __name__ == '__main__':
-    parser = optparse.OptionParser('usage: python %prog [options](eg: python %prog http://www.insight-labs.org/)')
+    print(banner)
+    parser = optparse.OptionParser('usage: python %prog [options](eg: python %prog http://www.test.com/)')
     parser.add_option('-u', '--url', dest = 'url', type = 'string', help = 'target url')
+    parser.add_option('-l', '--list', dest = 'list', default=False, action="store_true", help='List all WAFs that we are able to detect')
 
     (options, args) = parser.parse_args()
+    if options.list != None or options.list != "":
+
+        print "WAFid can identify these WAFs:"
+        for waf in wafdetectlist:
+            print "  "+waf
+        sys.exit()
     if options.url == None or options.url == "":
         parser.print_help()
         sys.exit()
     url =options.url
     wafidentify = wafid(url)
     wafidentify._run()
-
