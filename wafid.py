@@ -190,8 +190,7 @@ if __name__ == '__main__':
     parser.add_option('-l', '--list', dest = 'list', default=False, action="store_true", help='List all WAFs that we are able to detect')
 
     (options, args) = parser.parse_args()
-    if options.list != None or options.list != "":
-
+    if options.list== True:
         print "WAFid can identify these WAFs:"
         for waf in wafdetectlist:
             print "  "+waf
