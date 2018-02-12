@@ -101,14 +101,15 @@ class wafid(object):
         try:
             self.scan_site()
         except:
+            print "[+]【Wafid】please check site url : " +self._url
             raise
 
     def report_waf(self):
-        print "identify website waf type is : "+self._finger
+        print "[+]【Wafid】identify website waf type is : "+self._finger +"\r\n"
 
     def scan_site(self):
         if "http" not in self._url:
-            print "please check site url : " +self._url
+            print "[+]【Wafid】please check site url : " +self._url
             return False
         for vector in range(0,len(WAF_ATTACK_VECTORS)):
             turl= ''
@@ -121,6 +122,8 @@ class wafid(object):
                 self.report_waf()
                 return True
             else:
+                self._nowaf="This website has no waf or identify false!!!"
+                print "[+]【Wafid】identify waf finger false : "+self._nowaf+"\r\n"
                 return False
         
         return True
@@ -138,7 +141,7 @@ class wafid(object):
                   # print "identify website waf type is : "+self._finger
                    return True
                 else:
-                    pass
+                    continue
                    #print "regmatch head_type regexp false!"
       
             if not self._finger:
@@ -159,7 +162,7 @@ class wafid(object):
             else:
                 self._nowaf="This website has no waf or identify false!!!"
                 #print "get waf finger false:"+self._nowaf
-                return False
+                #return False
         return False
 
     def check_waf(self, resp):
@@ -176,12 +179,12 @@ class wafid(object):
                     return True
                 else:
                     self._nowaf="This website has no waf or identify false!!!"
-                    #print "get waf finger false:"+self._nowaf
+                    #print "[+]【Wafid】get waf finger false: "+self._nowaf
             else:
-                pass
+                continue
                 #print "head type search ..."
         
-        if check_resp(resp):
+        if self.check_resp(resp):
            return True
         return False
 
@@ -193,7 +196,7 @@ if __name__ == '__main__':
 
     (options, args) = parser.parse_args()
     if options.list== True:
-        print "WAFid can identify these WAFs:"
+        print "[+]【Wafid】WAFid can identify these WAFs:"
         for waf in wafdetectlist:
             print "  "+waf
         sys.exit()
