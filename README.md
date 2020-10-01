@@ -1,4 +1,4 @@
-# wafid
+# wafid - A Wonderful Tool
 
  WAFid - Web Application Firewall identify Tool
 
