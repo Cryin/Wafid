@@ -1,4 +1,4 @@
-# wafid
+# wafid-for U
 
  WAFid - Web Application Firewall identify Tool
 
